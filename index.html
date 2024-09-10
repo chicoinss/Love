@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #D4A5F4, #A1C4FD);
+            background: #A1C4FD; /* Azul claro */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,7 +55,12 @@
             transition: all 0.3s ease;
         }
 
-        #askButton, #prepareButton {
+        #askButton {
+            background-color: #003366; /* Azul escuro */
+            color: white;
+        }
+
+        #prepareButton {
             background-color: #FF6F91;
             color: white;
         }
@@ -80,8 +85,13 @@
 
         #finalMessage {
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #FF6F91;
+            margin-top: 20px;
+        }
+
+        #question {
+            font-family: 'Poppins', sans-serif;
         }
     </style>
 </head>
@@ -98,12 +108,12 @@
             <button id="prepareButton">Está preparada?</button>
         </div>
         <div id="proposal" class="hidden">
-            <h1 id="question">Você aceita ser minha namorada?</h1>
+            <h1 id="question">Anna Clara, você aceita ser minha namorada?</h1>
             <div id="buttons">
                 <button id="yesButton">Sim</button>
                 <button id="noButton">Não</button>
             </div>
-            <h2 id="finalMessage" class="hidden">Agora você é oficialmente minha namorada!</h2>
+            <h2 id="finalMessage" class="hidden">Agora você é oficialmente minha namorada! <br> Eu te amo muito, meu amor.</h2>
         </div>
     </div>
 

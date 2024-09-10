@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Você aceita ser minha namorada?</title>
+    <!-- Importando Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fontes personalizadas do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #D4A5F4, #A1C4FD);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1, p {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: #FF6F91;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            padding: 15px 25px;
+            font-size: 1.2rem;
+            margin: 10px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #askButton, #prepareButton {
+            background-color: #FF6F91;
+            color: white;
+        }
+
+        #yesButton {
+            background-color: #FF6F91;
+            color: white;
+        }
+
+        #noButton {
+            background-color: #87CEFA;
+            color: white;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #finalMessage {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: #FF6F91;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Mensagem romântica -->
+        <p id="romanticMessage">Desde que você entrou na minha vida, tudo ganhou um novo sentido. Com você, até os dias mais simples se tornaram especiais, e os momentos de silêncio passaram a ser preenchidos com uma paz que só o seu sorriso traz. Quando estou ao seu lado, sinto que encontrei meu lugar no mundo, como se o destino estivesse nos guiando para esse encontro perfeito, onde tudo faz sentido. Você é o abraço que aquece, o olhar que conforta, e o riso que ilumina até os dias mais nublados. Quero te fazer feliz, te apoiar e construir momentos que sejam só nossos, sempre com carinho e respeito.</p>
+        
+        <!-- Botão inicial para fazer a pergunta -->
+        <button id="askButton">Gostaria de fazer uma pergunta a seguir</button>
+
+        <!-- Botão "Está preparada?" e pedido de namoro ocultos inicialmente -->
+        <div id="prepareSection" class="hidden">
+            <button id="prepareButton">Está preparada?</button>
+        </div>
+        <div id="proposal" class="hidden">
+            <h1 id="question">Você aceita ser minha namorada?</h1>
+            <div id="buttons">
+                <button id="yesButton">Sim</button>
+                <button id="noButton">Não</button>
+            </div>
+            <h2 id="finalMessage" class="hidden">Agora você é oficialmente minha namorada!</h2>
+        </div>
+    </div>
+
+    <script>
+        const askButton = document.getElementById('askButton');
+        const prepareSection = document.getElementById('prepareSection');
+        const prepareButton = document.getElementById('prepareButton');
+        const proposal = document.getElementById('proposal');
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const question = document.getElementById('question');
+        const finalMessage = document.getElementById('finalMessage');
+        const buttonsDiv = document.getElementById('buttons');
+
+        let noClickCount = 0;
+
+        askButton.addEventListener('click', () => {
+            // Oculta a mensagem romântica e o botão inicial, e mostra o botão "Está preparada?"
+            askButton.style.display = 'none';
+            document.getElementById('romanticMessage').style.display = 'none';
+            prepareSection.classList.remove('hidden');
+        });
+
+        prepareButton.addEventListener('click', () => {
+            // Oculta o botão "Está preparada?" e mostra o pedido de namoro
+            prepareSection.classList.add('hidden');
+            proposal.classList.remove('hidden');
+        });
+
+        noButton.addEventListener('click', () => {
+            noClickCount++;
+
+            if (noClickCount === 1) {
+                noButton.textContent = 'Tem certeza?';
+            } else if (noClickCount === 2) {
+                noButton.textContent = 'Você vai magoar meu coração';
+            } else {
+                noButton.style.display = 'none';
+            }
+        });
+
+        yesButton.addEventListener('click', () => {
+            finalMessage.classList.remove('hidden');
+            buttonsDiv.classList.add('hidden');
+            question.classList.add('hidden');
+        });
+    </script>
+</body>
+</html>
